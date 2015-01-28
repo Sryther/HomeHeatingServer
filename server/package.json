@@ -1,0 +1,11 @@
+{
+  "name": "Lab",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "webservice": "^0.5.1"
+  }
+}
