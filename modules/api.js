@@ -1,12 +1,18 @@
-module.exports = function () {
-    module.redirectHome = function(req, res) {
-        res.sendStatus(301);
-        res.redirect('/api');
-    };
+module.exports = function (fs) {
+    module.getSettings = function(req, res) {
+        fs.readFile(__dirname + "/../data/settings.json", 'utf8', function(err, data) {
+            res.send(JSON.parse(data));
+        });
+    }
 
-    module.getHome = function(req, res) {
-        res.sendStatus(200);
-        res.end();
+    module.postSettings = function(req, res) {
+        var settings = req.body.settings;
+
+        fs.writeFile(__dirname + "/../data/settings.json", JSON.stringify(settings), function (err) {
+            if (err) return console.log(err);
+            res.sendStatus(200);
+        });
+
     }
 
     return module;

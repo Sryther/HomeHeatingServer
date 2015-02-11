@@ -31,13 +31,13 @@ app.use('/api', expressJwt({secret: secret}));
 
 
 // Modules
-var auth = require('./modules/auth')(jwt);
-var api = require('./modules/api')();
+var auth = require('./modules/auth')(fs, jwt, secret);
+var api = require('./modules/api')(fs);
 
 // Routes
-app.get('/', api.redirectHome);
 app.post('/login', auth.attempt);
-app.get('/api', api.getHome);
+app.get('/api/settings', api.getSettings);
+app.post('/api/settings', api.postSettings);
 
 https.createServer(opts, app).listen(8000, function () {
     console.log('Server listening on port ', 8000);
