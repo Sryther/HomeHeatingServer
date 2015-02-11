@@ -12,7 +12,8 @@ Vagrant::Config.run do |config|
     # The url from where the 'config.vm.box' box will be fetched if it
     # doesn't already exist on the user's system.
     box.vm.box_url = "http://asquera-share.s3.amazonaws.com/boxes/base/ubuntu-10.04.3-server-amd64-asq.box"
-    
+    config.vm.network "forwarded_port", guest: 443, host: 8000
+
     # Boot with a GUI so you can see the screen. (Default is headless)
     #box.vm.boot_mode = :gui
     # add a hostonly network if desired
