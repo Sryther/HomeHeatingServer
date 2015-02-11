@@ -8,15 +8,14 @@ var methodOverride = require('method-override');
 var fs = require('fs');
 
 var opts = {
-  key: fs.readFileSync('./ssl/keys/key.pem'),
-  cert: fs.readFileSync('./ssl/certificates/cert.pem'),
-  passphrase: "azerty" // To remove in prod
+    key: fs.readFileSync('./ssl/keys/heat.key'),
+    cert: fs.readFileSync('./ssl/certificates/heat.pem')
 };
 
 var secret = "Str0ngS3cr3t"; // Or a file
 
 // Configuration
-app.use(morgan('dev')); // Log every request to the console  <---- Change in production
+app.use(morgan('dev')); // Log every request to the console
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
