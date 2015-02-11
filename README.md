@@ -1,7 +1,9 @@
 # Routes
 
 GET - /api/settings - Return a JSON object, contains settings
+
 POST - /api/settings - Accept a JSON object in a variable named "settings" (in the request body)
+
 POST - /login - Accept a JSON object, return a Json Web Token
 
 # How to
