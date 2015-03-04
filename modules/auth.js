@@ -1,8 +1,8 @@
 module.exports = function (fs, jwt, secret) {
     module.attempt = function(req, res) {
         var body = req.body;
-        
-        if (body.username == "" || body.password == "") {
+
+        if (body.username === "" || body.password === "") {
             res.sendStatus(400);
         }
 
@@ -10,7 +10,7 @@ module.exports = function (fs, jwt, secret) {
             var cred = JSON.parse(data);
             if (cred.username == body.username && cred.password == body.password) {
                 var token = jwt.sign(cred, secret, { expiresInMinutes: 3600 });
-                res.json(token);
+                res.json({jwt: token});
             } else {
                 res.sendStatus(400);
             }

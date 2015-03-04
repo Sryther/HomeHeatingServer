@@ -32,16 +32,19 @@ The used port is ```8000```, you can change it in index.js
 ```json
 {
     "hours": {
-            "leave": 1,
-            "back": 2
+        "leave": {
+            "h": 11,
+            "m": 29
+        },
+        "back": {
+            "h": 11,
+            "m": 30
+        }
     },
-    "holidays": {
-        "leave": "",
-        "back": ""
-    },
+    "auto": true,
     "temperature": {
         "wanted": 0,
-        "outside":0
+        "outside": 0
     },
     "state": false
 }

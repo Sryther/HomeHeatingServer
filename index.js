@@ -6,6 +6,7 @@ var jwt = require('jsonwebtoken');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var fs = require('fs');
+var schedule = require('node-schedule');
 
 var opts = {
     key: fs.readFileSync('./ssl/keys/heat.key'),
@@ -31,8 +32,12 @@ app.use('/api', expressJwt({secret: secret}));
 
 
 // Modules
+var the_switch = require('./modules/the_switch')(fs);
+var cron_persistant = require('./modules/cron_persistant')(schedule, the_switch);
 var auth = require('./modules/auth')(fs, jwt, secret);
-var api = require('./modules/api')(fs);
+var api = require('./modules/api')(fs, cron_persistant, the_switch);
+
+// TODO: Try trigger on start if needed
 
 // Routes
 app.post('/login', auth.attempt);
