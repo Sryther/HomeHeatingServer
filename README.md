@@ -23,17 +23,35 @@ Every URI preceded by /api require an authenticated user. To log in the app, sen
 
 ## Port
 
-The used port is 8000, you can change it in index.js
+The used port is ```8000```, you can change it in index.js
 
 ## JSON
 
 ### Settings
 
-    {"hours":{"leave":1,"back":2},"holidays":{"leave":"","back":""},"temperature":{"wanted":0,"outside":0},"state":false}
+```json
+{
+    "hours": {
+            "leave": 1,
+            "back": 2
+    },
+    "holidays": {
+        "leave": "",
+        "back": ""
+    },
+    "temperature": {
+        "wanted": 0,
+        "outside":0
+    },
+    "state": false
+}
+```
 
 ### User
 
+```json
     {
         "username": "toto",
         "password": "toto"
     }
+```
